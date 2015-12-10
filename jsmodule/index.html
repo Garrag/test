@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>test</title>
+    <link rel="stylesheet" href="css/idangerous.swiper.css">
+</head>
+<body>
+<script type="text/javascript">
+    var date = function(){
+        this.name = 'aaa';
+        this.setName = function(n){
+            this.name = n;
+            return '格式2:' + this.name;
+        };
+        return this.name;
+    };
+
+    date.prototype.toString = function(){
+        return "格式1:" + this.name;
+    };
+
+    var d = new date();
+    d.setName('bbb');
+    document.write(d.setName('ccc') + '<br/>');//str
+    document.write(d);//str
+
+</script>
+</body>
+</html>

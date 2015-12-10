@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo7</title>
+</head>
+<body>
+        <canvas width="640" height="480" id="testcanvas" style="border: 1px solid black">
+            你的浏览器不支持H5
+        </canvas>
+</body>
+<script>
+    window.onload = function(){
+        pageLoaded();
+    };
+
+    function pageLoaded(){
+        var canvas = document.getElementById('testcanvas');
+        var context = canvas.getContext('2d'); //拿到画笔
+
+        context.fillRect(10,10,20,20); //实心矩形
+
+        context.strokeRect(40, 10, 20, 20); //空心矩形
+
+        context.clearRect(15,15,5,5);
+
+        context.beginPath();
+        context.moveTo(100, 10);
+        context.lineTo(120,200);
+        context.lineTo(150,10);
+        context.lineTo(100,10);
+        context.closePath();
+        context.stroke();
+
+        context.beginPath();
+        context.arc(220, 100, 25, 0, 3/2*Math.PI, false);
+//        context.closePath();
+        context.stroke();
+
+        context.fillText('Hello, World !', 330,60);
+
+        context.font = '10 pt Arial';
+        context.fillText('Hello, World !', 330,80);
+
+        context.font = '20 pt Arial';
+        context.strokeText('你好, World !', 330, 100);
+
+
+
+
+    }
+
+</script>
+
+</html>
