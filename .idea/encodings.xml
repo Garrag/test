@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://F:/serverCode/background/public/ejs/fileManager.ejs" charset="UTF-8" />
+    <file url="file://F:/serverCode/background/public/ejs/newsList.ejs" charset="UTF-8" />
+    <file url="file://F:/serverCode/background/public/ejs/selectImg.ejs" charset="UTF-8" />
+    <file url="file://F:/serverCode/background/public/javascripts/jx_Utils.js" charset="UTF-8" />
+    <file url="file://F:/serverCode/background/routes/fileHandle.js" charset="UTF-8" />
+    <file url="file://F:/serverCode/background/routes/index.js" charset="UTF-8" />
+    <file url="file://F:/serverCode/background/routes/news.js" charset="UTF-8" />
+    <file url="file://F:/serverCode/background/views/gui/header.ejs" charset="UTF-8" />
+    <file url="file://F:/serverCode/background/views/gui/treeMenu.ejs" charset="UTF-8" />
+    <file url="file://F:/serverCode/background/views/index.ejs" charset="UTF-8" />
+    <file url="file://F:/serverCode/pc/public/ejs/fileManager.ejs" charset="UTF-8" />
+    <file url="file://F:/serverCode/pc/public/ejs/newsList.ejs" charset="UTF-8" />
+    <file url="file://F:/serverCode/pc/public/ejs/selectImg.ejs" charset="UTF-8" />
+    <file url="file://F:/serverCode/pc/public/javascripts/JxSwiper.js" charset="UTF-8" />
+    <file url="file://F:/serverCode/pc/public/javascripts/checkBrowser.js" charset="UTF-8" />
+    <file url="file://F:/serverCode/pc/public/javascripts/jx_Utils.js" charset="UTF-8" />
+    <file url="file://F:/serverCode/pc/routes/activity.js" charset="UTF-8" />
+    <file url="file://F:/serverCode/pc/routes/background/fileHandle.js" charset="UTF-8" />
+    <file url="file://F:/serverCode/pc/routes/background/index.js" charset="UTF-8" />
+    <file url="file://F:/serverCode/pc/routes/background/news.js" charset="UTF-8" />
+    <file url="file://F:/serverCode/pc/routes/news.js" charset="UTF-8" />
+    <file url="file://F:/serverCode/pc/routes/products.js" charset="UTF-8" />
+    <file url="file://F:/serverCode/pc/views/background/gui/header.ejs" charset="UTF-8" />
+    <file url="file://F:/serverCode/pc/views/background/gui/treeMenu.ejs" charset="UTF-8" />
+    <file url="file://F:/serverCode/pc/views/background/index.ejs" charset="UTF-8" />
+    <file url="file://F:/serverCode/pc/views/item/news.ejs" charset="UTF-8" />
+    <file url="file://F:/serverCode/server/routes/action.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-game01/js/game.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo1/Main.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo1/js/Action.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jsmodule/js/index.js" charset="UTF-8" />
+  </component>
+</project>
