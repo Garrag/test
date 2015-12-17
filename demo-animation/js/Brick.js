@@ -2,12 +2,14 @@
  * Created by admin on 2015/12/16.
  */
 //砖块
-function Brick(color) {
+function Brick(i, j, color) {
+    this.width = 100;
+    this.height = 100;
     this.points = [];
-    this.points[0] = new Point3d(-100, -100, 100);
-    this.points[1] = new Point3d(100, -100, 100);
-    this.points[2] = new Point3d(100, 100, 100);
-    this.points[3] = new Point3d(-100, 100, 100);
+    this.points[0] = new Point3d(this.width * i, -this.height * (j + 1), 100);
+    this.points[1] = new Point3d(this.width * (i + 1), -this.height * (j + 1), 100);
+    this.points[2] = new Point3d(this.width * (i + 1), -this.height * j, 100);
+    this.points[3] = new Point3d(this.width * i, -this.height * j, 100);
     this.color = (color === undefined) ? "#ff0000" : utils.parseColor(color);
     this.lineWidth = 2;
     this.alpha = 0.5;

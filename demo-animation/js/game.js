@@ -11,14 +11,12 @@
         vpX = canvas.width / 2, //视点
         vpY = canvas.height / 2,
         bounce = -0.6,
-        floor = 50,
+        floor = 100,
         ax = 0,
         ay = 0,
         az = 0,
-        brick = new Brick(),
-        nFloor = new Floor(2,10);
-
-        brick.setVanishingPoint(vpX, vpY);
+        nFloor = new Floor(8, 8);
+    nFloor.setVanishingPoint(vpX, vpY);
 
     var balls = [],
         ballNum = 30;
@@ -35,6 +33,7 @@
         switch (event.keyCode) {
             case 38:        //up
                 az = -100;
+                nFloor.cZ += 10;
                 break;
             case 40:        //down
                 az = 100;
@@ -77,9 +76,6 @@
     //移动物体
     function move(ball) {
         if (elapsed) {
-            ball.vx += ax;
-            ball.vy += ay;
-            ball.vz += az;
             ball.xpos += ball.vx * elapsed / 1000;
             ball.ypos += ball.vy * elapsed / 1000;
             ball.zpos += ball.vz * elapsed / 1000;
@@ -110,7 +106,7 @@
         window.requestAnimationFrame(drawFrame, canvas);
         context.clearRect(0, 0, canvas.width, canvas.height);
         elapsed = getTimer() - time;
-        brick.draw(context);
+        nFloor.draw(context);
         balls.forEach(move);
         balls.forEach(drawBall);
         time = getTimer();
