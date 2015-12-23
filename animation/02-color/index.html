@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-color</title>
+</head>
+<body>
+<canvas id="canvas" width="640" height="480" style="border: 1px solid black">你的浏览器不支持html5</canvas>
+<script src="../utils.js"></script>
+<script>
+    window.onload = function(){
+
+        var canvas = document.getElementById('canvas'),
+                context = canvas.getContext('2d'),
+                mouse = utils.captureMouse(canvas);
+
+        function onMouseMove(){
+            context.lineTo(mouse.x, mouse.y);
+            context.stroke();
+        }
+
+        canvas.addEventListener('mousedown', function(){
+            context.beginPath();
+            context.moveTo(mouse.x, mouse.y);
+            canvas.addEventListener('mousemove', onMouseMove, false)
+        },false);
+
+
+        canvas.addEventListener('mouseup', function(){
+            canvas.removeEventListener('mousemove', onMouseMove, false);
+        },false);
+
+    }
+</script>
+
+</body>
+</html>
