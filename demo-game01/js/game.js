@@ -2,10 +2,11 @@
  * Created by admin on 2015/12/10.
  */
 $(window).load(function () {
-    jsLoader.loadJson(function () {
+    FileLoader.loadJson(function () {
         game.init();
     });
 });
+
 /**
  * 游戏流程控制
  * @type {{init: Function, showLevelScreen: Function}}
@@ -13,10 +14,9 @@ $(window).load(function () {
 var game = {
     init: function () {
         levels.init();
-
+        loader.init();
         $('.gamelayer').hide();
         $('#gamestartscreen').show(); //显示游戏开始层
-
         game.canvas = $('#gamecanvas')[0];
         game.context = game.canvas.getContext('2d');
     },
@@ -26,45 +26,26 @@ var game = {
     }
 };
 
-/**
- * js文件加载器
- * @type {{count: number, totalCount: number, loadOneScript: Function, loadJson: Function}}
- */
-var jsLoader = {
+var FileLoader = {
     count: 0,
     totalCount: 0,
     loadOneScript: function (url, callback) {
-        var script = document.createElement("script");
-        script.type = "text/javascript";
-        // IE
-        if (script.readyState) {
-            script.onreadystatechange = function () {
-                if (script.readyState == "loaded" || script.readyState == "complete") {
-                    script.onreadystatechange = null;
-                    if (jsLoader.count == jsLoader.totalCount) {
-                        callback();
-                    } else {
-                        jsLoader.count++;
-                    }
-                }
-            };
-        } else { // others
-            script.onload = function () {
-                if (jsLoader.count == jsLoader.totalCount) {
-                    callback();
-                } else {
-                    jsLoader.count++;
-                }
-            };
-        }
-        script.src = url;
-        document.body.appendChild(script);
+        $.getScript(url).done(function(){
+            FileLoader.count ++;
+            if(FileLoader.count === FileLoader.totalCount){
+                callback();
+            }
+        });
     },
     loadJson: function (callback) {
         $.getJSON('project.json', function (data) {
-            jsLoader.totalCount = data.fileList.length - 1;
+            FileLoader.totalCount = data.fileList.length;
+            if(FileLoader.totalCount <= 0){
+                callback();
+                return;
+            }
             data.fileList.forEach(function (item) {
-                jsLoader.loadOneScript(item, callback);
+                FileLoader.loadOneScript(item, callback);
             });
         });
     }
@@ -72,32 +53,45 @@ var jsLoader = {
 
 var loader = {
     loaded: true,
-    totalCount: 0,
     loadedCount: 0,
+    totalCount: 0,
     init: function () {
         var mp3Support, oggSupport;
         var audio = document.createElement('audio');
         if (audio.canPalyType) {
             // TODO 检测声音
+            // check for sound support
+            var mp3Support,oggSupport;
+            var audio = document.createElement('audio');
+            if (audio.canPlayType) {
+                // Currently canPlayType() returns: "", "maybe" or "probably"
+                mp3Support = "" != audio.canPlayType('audio/mpeg');
+                oggSupport = "" != audio.canPlayType('audio/ogg; codecs="vorbis"');
+            } else {
+                //The audio tag is not supported
+                mp3Support = false;
+                oggSupport = false;
+            }
+            // Check for ogg, then mp3, and finally set soundFileExtn to undefined
+            loader.soundFileExtn = oggSupport?".ogg":mp3Support?".mp3":undefined;
         }
     },
 
-    loadImage: function (url) {
+    loadImage:function(url){
         this.totalCount++;
         this.loaded = false;
         $('#loadingscreen').show();
-        //加载图片
-        var img = new Image();
-        img.src = url;
-        img.onload = loader.itemLoaded;
-        return img;
+        var image = new Image();
+        image.src = url;
+        image.onload = loader.itemLoaded;
+        return image;
     },
 
-    itemLoaded: function () {
+    itemLoaded:function(){
         loader.loadedCount++;
-        $('#loadingmessage').html('加载 : ' + loader.loadedCount + ' / ' + loader.totalCount);
-        if(loader.loadedCount === loader.totalCount){
-            loader = true;
+        $('#loadingmessage').html('Loaded '+loader.loadedCount+' of '+loader.totalCount);
+        if (loader.loadedCount === loader.totalCount){
+            loader.loaded = true;
             $('#loadingscreen').hide();
             if(loader.onload){
                 loader.onload();
@@ -107,13 +101,3 @@ var loader = {
     }
 
 };
-
-
-
-
-
-
-
-
-
-

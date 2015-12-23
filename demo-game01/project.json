@@ -1,5 +1,6 @@
 {
   "fileList":[
-    "./js/levels.js"
+    "./js/levels.js",
+    "./js/loader.js"
   ]
 }

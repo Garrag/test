@@ -32,6 +32,9 @@ var levels = {
     },
 
     load: function (number) {
-        console.log(number);
+        game.currentLevel = {number: number, hero: []};
+        game.score = 0;
+        $('#score').html('Score : ' + game.score);
+        var level = levels.data[number];
     }
 };
