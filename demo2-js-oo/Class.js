@@ -32,12 +32,36 @@
     };
 })();
 
+function testObject(name){
+    this.name = name;
+}
 
+//testObject.prototype = {
+//   name:'aaa'
+//};
 
+var aaa = {
+   //name:"aaa"
+};
 
-var a = Class.extend({
-    name:"asdfasdfasdfasdfasd"
-});
+var bbb = new testObject('bbb');
 
+console.log(testObject.prototype); //function testObject(name){this.name = name;}
+console.log(aaa); //Object {name: "aaa"}
+console.log(bbb); //testObject {name: "bbb"}
+console.log('--------------------------------------------------------------------------');
 
-console.log(a.name);
+function Person( name ) {
+    this.name = name;
+}
+var p = new Person();
+// 对象的隐式引用指向了构造器的 prototype 属性，所以此处打印 true
+console.log( p.__proto__ === Person.prototype );
+
+// 原型本身是一个 Object 对象，所以他的隐式引用指向了
+// Object 构造器的 prototype 属性 , 故而打印 true
+console.log( Person.prototype.__proto__ === Object.prototype );
+
+// 构造器 Person 本身是一个函数对象，所以此处打印 true
+console.log( Person.__proto__ === Function.prototype );
+
